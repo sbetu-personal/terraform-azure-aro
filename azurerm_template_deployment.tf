@@ -1,7 +1,7 @@
 # Deploy ARO using ARM template
 
 resource "azurerm_template_deployment" "aro-cluster" {
-  name                = "openshift-cluster-${local.environment}"
+  name                = var.clusterName
   resource_group_name = azurerm_resource_group.openshift-cluster.name
 
   template_body = file("${path.module}/ARM-openShiftClusters.json")
@@ -9,8 +9,9 @@ resource "azurerm_template_deployment" "aro-cluster" {
   parameters = {
     "clientId"                 = var.clientId
     "clientSecret"             = var.clientSecret
-    "clusterName"              = "openshift-cluster-${local.environment}"
+    "clusterName"              = var.clusterName
     "clusterResourceGroupName" = azurerm_resource_group.openshift-cluster.name
+    "domainResourceGroupName"  = var.domainResourceGroupName
     "domain"                   = local.domain_name
     "location"                 = var.location
     "masterSubnetId"           = azurerm_subnet.master-subnet.id

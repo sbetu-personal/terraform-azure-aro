@@ -2,14 +2,15 @@
 
 echo "This only needs to be run once! It creates storage account in Azure, which is used by Terraform to store the tfstate."
 
-CUSTOMER=vodafone
+CUSTOMER=praneeth
 RESOURCE_GROUP_NAME=${CUSTOMER}-tfstate
 # Storage account must be unique!
 STORAGE_ACCOUNT_NAME=${CUSTOMER}tfstate$RANDOM
 CONTAINER_NAME=tfstate
+location=eastus
 
 # Create a resource group
-az group create --name ${RESOURCE_GROUP_NAME} --location "Australia East"
+az group create --name ${RESOURCE_GROUP_NAME} --location ${location}
 # Create a storage account
 az storage account create --resource-group ${RESOURCE_GROUP_NAME} --name ${STORAGE_ACCOUNT_NAME} --sku Standard_LRS --encryption-services blob
 # Get a storage account key

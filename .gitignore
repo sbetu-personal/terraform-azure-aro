@@ -1,4 +1,0 @@
-.terraform/
-backend.tf
-pull-secret.txt
-variables.tfvars

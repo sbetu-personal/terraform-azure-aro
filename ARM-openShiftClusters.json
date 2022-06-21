@@ -20,6 +20,12 @@
         "description": "The ID of the cluster resource group (immutable)"
       }
     },
+    "domainResourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "The ID of the cluster resource group (immutable)"
+      }
+    },
     "domain": {
       "type": "string",
       "metadata": {
@@ -29,7 +35,7 @@
     "tags": {
       "type": "string",
       "defaultValue": {
-        "owner"   : "lmaly",
+        "owner"   : "naveen",
         "service" : "openshift",
         "env"     : ""
       },
@@ -84,7 +90,7 @@
         "clusterProfile": {
           "pullSecret": "[parameters('pullSecret')]",
           "domain": "[parameters('domain')]",
-          "resourceGroupId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', parameters('clusterResourceGroupName'))]"
+          "resourceGroupId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', parameters('domainResourceGroupName'))]"
         },
         "masterProfile": {
           "subnetId": "[parameters('masterSubnetId')]",

@@ -1,7 +1,7 @@
 # Input variables are parameters for Terraform modules
 
 variable "workspace_to_environment_map" {
-  type = map
+  type = map(any)
   default = {
     default = "nonprod"
     nonprod = "nonprod"
@@ -36,6 +36,21 @@ variable "clientSecret" {
 variable "rp_object_id" {
   description = "The Resource Provider ID for Azure Red Hat OpenShift"
 }
+
+variable "clusterName" {
+  description = "ARO Azure Red Hat OpenShift Cluster Name"
+}
+
+variable "openshiftclusterrg" {
+  description = "ARO Azure Red Hat OpenShift RG"
+}
+
+variable "domainResourceGroupName" {
+  description = "ARO Azure Red Hat OpenShift Domain RG"
+}
+
+variable "subscription_id" {}
+variable "tenant_id" {}
 
 variable "roles" {
   description = "Roles to be assigned to the Principal"

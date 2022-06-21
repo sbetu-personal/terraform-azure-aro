@@ -6,9 +6,11 @@ terraform {
     }
   }
   # whilst the `version` attribute is optional, I recommend pinning to a given version of the Provider
-  required_version = "= 0.13.5"
+  required_version = ">= 0.13.5"
 }
 
 provider "azurerm" {
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
   features {}
 }
